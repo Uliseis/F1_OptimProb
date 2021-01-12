@@ -13,7 +13,7 @@ class PopulationReplacement(ReplacementOperator.ReplacementOperator):
         size = populationActual.psize
         population = Population(size)
         for i in range(size):
-            if populationActual.population[i].getFitness() >= populationNueva.population[i].getFitness():
+            if populationActual.population[i].getFitness() <= populationNueva.population[i].getFitness():
                 population.add(populationActual.population[i])
             else:
                 population.add(populationNueva.population[i])

@@ -24,8 +24,8 @@ class BinomialCrossoverOperator(CrossoverOperator.CrossoverOperator):
         irand = random.randint(1, size)
         for i in range(size):
             if rand <= CR or i == irand:
-                trial_vector.append(mutant_vector[i])
+                trial_vector.append(mutant_vector.solucion[i])
             else:
-                trial_vector.append(target_vector[i])
+                trial_vector.append(target_vector.solucion[i])
         trial_genome = Genome(trial_vector, 0)
         return [trial_genome]
