@@ -5,17 +5,17 @@ import random
 
 
 class BinomialCrossoverOperator(CrossoverOperator.CrossoverOperator):
-    global CR
 
     def __init__(self):
         super().__init__()
-        CR = 0.5
 
     ''' El parametro genomas_list es una lista de 2 genomas, target_vector y mutant vector.
         El metodo contruye un vector a partir de estos vectores. Se genera un numero,rand, que sigue
         una distribucion Uniforme[0,1]. El vector se va creando con valores del target_vector o del 
         mutant_vector en funcion del valor rand con CR. '''
+
     def apply(self, genomas_list):
+        CR = 0.5
         trial_vector = []
         target_vector = genomas_list[0]
         mutant_vector = genomas_list[1]
