@@ -2,7 +2,7 @@ from group08.Operators.ReplacementOperator import ReplacementOperator
 from group08.Population.Population import Population
 
 
-class GenerationalReplacement(ReplacementOperator.ReplacementOperator):
+class PopulationReplacement(ReplacementOperator.ReplacementOperator):
 
     def __init__(self):
         super().__init__()
