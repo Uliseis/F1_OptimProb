@@ -5,7 +5,7 @@ from group08.Population.Population import Population
 from group08.Operators.CrossoverOperator import BinomialCrossoverOperator
 from group08.Operators.MutationOperator import DERand1Operator
 from group08.Operators.SelectionOperator import VectorSelection
-from group08.Operators.ReplacementOperator import GenerationalReplacement
+from group08.Operators.ReplacementOperator import PopulationReplacement
 
 import numpy as np
 import random
@@ -30,7 +30,7 @@ class EA(object):
 		self.population = Population(len(bounds))
 		self.crossOper = BinomialCrossoverOperator.BinomialCrossoverOperator()
 		self.mutOper = DERand1Operator.DERand1Operator()
-		self.replOper = GenerationalReplacement.GenerationalReplacement()
+		self.replOper = PopulationReplacement.PopulationReplacement()
 		self.selecOper = VectorSelection.VectorSelection()
 		self.population = self.initpopulation()
 
