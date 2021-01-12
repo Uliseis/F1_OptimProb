@@ -44,24 +44,26 @@ class EA(object):
 		#Se crea una nueva poblacion que sera la siguiente
 		newpopulation = Population(self.psize)
 		#Se realiza el bucle para cada dos individuos
-		for i in range(0, math.floor(self.psize/2)):
-			#Seleccionamos dos genomas de la poblacion actual
-			selected = [self.selecOper.apply(popul, 0)[0], self.selecOper.apply(popul, 0)[0]]
-			#Les aplicamos el crossover operator
-			crossed = self.crossOper.apply(selected)
+		for i in range(0, popul.psize):
+			#Seleccionamos cuatreo genomas de la poblacion actual: el target y tres random
+			selected = self.selecOper.apply(popul, i)
+			targetVector = selected[0]
+			donors = list()
+			donors.append(selected[1])
+			donors.append(selected[2])
+			donors.append(selected[3])
+			#Obtenemos el genoma mutado
+			bestGenome = popul.bestFitness()
+			mutationParam = [targetVector, bestGenome, donors]
+			mutationVector = self.mutOper.apply(mutationParam)
+			#Aplicamos el CrossoverOperator entre el targetVector y el mutationVector
+			crossed = self.crossOper.apply([targetVector, mutationVector])
 			crossed[0].fitness = self.calcular_fitness(crossed[0].getSolucion())
-			crossed[1].fitness = self.calcular_fitness(crossed[1].getSolucion())
-			#Mutamos a los nuevos individuos
-			gen1 = self.mutOper.apply([crossed[0]])
-			gen1.fitness = self.calcular_fitness(gen1.getSolucion())
-			gen2 = self.mutOper.apply([crossed[1]])
-			gen2.fitness = self.calcular_fitness(gen2.getSolucion())
-			#Incluimos los nuevos individuos en la nueva poblacion
-			newpopulation.add(gen1)
-			newpopulation.add(gen2)
+			#Incluimos el nuevo individuo en la  poblacion
+			newpopulation.add(crossed[0])
 
 		self.colocLimites(newpopulation)
-		#La nueva poblacion se convierte en la poblacion actual a traves del remplazo generacional
+		#Se obtiene a la nueva poblacion de forma elitista
 		return self.replOper.apply(popul, newpopulation)
 
 	#Inicia las variables de cada genoma aleatoriamente y añade psize genomas a la poblacion
