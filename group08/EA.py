@@ -2,9 +2,9 @@ import math
 
 from group08.Genome.Genome import Genome
 from group08.Population.Population import Population
-from group08.Operators.CrossoverOperator import TwoPointOperator
-from group08.Operators.MutationOperator import GaussianOperator
-from group08.Operators.SelectionOperator import TournamentSelection
+from group08.Operators.CrossoverOperator import BinomialCrossoverOperator
+from group08.Operators.MutationOperator import DERand1Operator
+from group08.Operators.SelectionOperator import VectorSelection
 from group08.Operators.ReplacementOperator import GenerationalReplacement
 
 import numpy as np
@@ -28,10 +28,10 @@ class EA(object):
 		self.bounds = bounds
 		self.psize = psize
 		self.population = Population(len(bounds))
-		self.crossOper = TwoPointOperator.TwoPointOperator()
-		self.mutOper = GaussianOperator.GaussianOperator()
+		self.crossOper = BinomialCrossoverOperator.BinomialCrossoverOperator()
+		self.mutOper = DERand1Operator.DERand1Operator()
 		self.replOper = GenerationalReplacement.GenerationalReplacement()
-		self.selecOper = TournamentSelection.TournamentSelection()
+		self.selecOper = VectorSelection.VectorSelection()
 		self.population = self.initpopulation()
 
 	#Metodo que corre el algoritmo genetico num veces
