@@ -12,13 +12,13 @@ class VectorSelection(SelectionOperator.SelectionOperator):
      coincidir con el target ni podran repetirse entre ellos.
      Se devuelve una lista de 4 genomas: 1 target y 3 donor'''
     def apply(self, genomes, i):
-        target = genomes[i]
+        target = genomes.population[i]
         vectors = list()
         vectors.append(target)
         for j in range(3):
             while True:
                 pos = rd.randint(0, i)
-                donoraux = genomes[pos]
+                donoraux = genomes.population[pos]
                 for k in range(len(vectors)):
                     if donoraux == vectors[k]:
                         continue
