@@ -3,7 +3,6 @@ from group08.Genome import Genome
 
 
 class DERand1Operator (MutationOperator.MutationOperator):
-
     global F
 
     def __init__(self):
