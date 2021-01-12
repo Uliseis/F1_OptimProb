@@ -1,5 +1,5 @@
 from group08.Operators.CrossoverOperator import CrossoverOperator
-from group08.Genome import Genome
+from group08.Genome.Genome import Genome
 import numpy as np
 import random
 
@@ -27,5 +27,5 @@ class BinomialCrossoverOperator(CrossoverOperator.CrossoverOperator):
                 trial_vector.append(mutant_vector[i])
             else:
                 trial_vector.append(target_vector[i])
-        trial_genome = Genome.Genome(trial_vector, 0)
+        trial_genome = Genome(trial_vector, 0)
         return [trial_genome]
