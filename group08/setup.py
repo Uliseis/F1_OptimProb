@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="group08",
-    version="1.0.0",
+    version="2.0.0",
     author="Group08",
     author_email="ui.bertolo@alumnos.upm.es; mihail.neagu@alumnos.upm.es; jose.llopez@alumnos.upm.es",
-    description="Heuristic optimization 1st practical work, by Group 08.",
+    description="Heuristic optimization 2nd practical work, by Group 08.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/pypa/sampleproject",
